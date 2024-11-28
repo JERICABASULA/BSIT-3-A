@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.4s, color 0.4s;
+  }
+
+  /* Light and dark theme styles */
+  body.light-mode {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+
+  body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+
+  /* Calculator container */
+  .calculator {
+    background-color: #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: background-color 0.4s, color 0.4s;
+  }
+
+  body.dark-mode .calculator {
+    background-color: #333;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  /* Input fields and button styles */
+  input[type="number"] {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin: 5px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: background-color 0.3s;
+  }
+
+  body.dark-mode input[type="number"] {
+    background-color: #555;
+    color: #f0f0f0;
+    border: 1px solid #666;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 18px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .calculate-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .calculate-btn:hover {
+    background-color: #45a049;
+  }
+
+  .theme-toggle-btn {
+    background-color: #555;
+    color: #fff;
+  }
+
+  .theme-toggle-btn:hover {
+    background-color: #777;
+  }
+
+  body.dark-mode .theme-toggle-btn {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+
+  /* Result text style */
+  #result {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body class="light-mode">
+
+<div class="calculator">
+  <h2>Simple Calculator</h2>
+
+  <!-- User input fields -->
+  <input type="number" id="num1" placeholder="First number">
+  <input type="number" id="num2" placeholder="Second number">
+  
+  <!-- Button to calculate sum -->
+  <button class="calculate-btn" onclick="calculateSum()">Add</button>
+  
+  <!-- Display result -->
+  <p id="result">Result: </p>
+
+  <!-- Theme toggle button -->
+  <button class="theme-toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+</div>
+
+<script>
+  // Function to calculate the sum of two numbers
+  function calculateSum() {
+    const num1 = parseFloat(document.getElementById("num1").value);
+    const num2 = parseFloat(document.getElementById("num2").value);
+    
+    // Check if inputs are numbers
+    if (!isNaN(num1) && !isNaN(num2)) {
+      document.getElementById("result").textContent = "Result: " + (num1 + num2);
+    } else {
+      document.getElementById("result").textContent = "Please enter valid numbers.";
+    }
+  }
+
+  // Function to toggle between light and dark theme
+  function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle("light-mode");
+    body.classList.toggle("dark-mode");
+  }
+</script>
+
+</body>
+</html>
